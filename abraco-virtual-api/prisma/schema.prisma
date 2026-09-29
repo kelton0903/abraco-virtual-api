@@ -1,0 +1,26 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model GrupoApoio {
+  id        String   @id @default(uuid())
+  nome      String
+  tipo      String   // AA, NA, CVV, OUTRO
+  descricao String
+  siteUrl   String?
+  telefone  String?
+  ativo     Boolean  @default(true)
+  criadoEm  DateTime @default(now())
+}
+
+model RegistroHumor {
+  id           String   @id @default(uuid())
+  humor        String   // bem, ansioso, triste, em recuperacao
+  comentario   String
+  dataRegistro DateTime @default(now())
+}
